@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zara's AI-Powered Developer Roadmap</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --deep:#0a0f1c; --paper:#fefbf5; --plasma:#ff4d6d; --plasma2:#ff4d6e13; --neon:#3bc9db; --volt:#ffd166; --purple:#b977fe; --mint:#06d6a0;
+  --mono:'Space Mono',monospace; --head:'Syne',sans-serif; --body:'DM Sans',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--deep);color:#f0f3fa;font-family:var(--body);overflow-x:hidden}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:12px 32px;background:rgba(10,15,28,0.92);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,0.1)}
+.nav-logo{font-family:var(--mono);font-size:13px;font-weight:700;background:linear-gradient(135deg,var(--plasma),var(--volt));-webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:-0.2px}
+.nav-logo i{margin-right:6px;background:none;-webkit-background-clip:unset;background-clip:unset;color:var(--plasma);font-size:14px}
+.nav-links{display:flex;gap:28px;flex-wrap:wrap}
+.nav-links a{font-family:var(--mono);font-size:10px;color:#9aa2b9;text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;transition:all 0.2s}
+.nav-links a:hover{color:var(--plasma)}
+
+.hero{min-height:90vh;display:flex;flex-direction:column;justify-content:center;padding:120px 48px 80px;position:relative;overflow:hidden}
+.hero-grid{position:absolute;inset:0;background-image:radial-gradient(circle at 20% 40%, rgba(59,201,219,0.08) 1px, transparent 1px);background-size:32px 32px;pointer-events:none}
+.hero-tag{font-family:var(--mono);font-size:11px;color:var(--neon);letter-spacing:0.15em;margin-bottom:24px;display:flex;align-items:center;gap:12px}
+.hero-tag::before{content:'';width:36px;height:2px;background:var(--plasma)}
+.hero-tag i{margin-right:6px;font-size:12px}
+.hero h1{font-family:var(--head);font-size:clamp(48px,9vw,100px);font-weight:800;line-height:1;letter-spacing:-0.02em;margin-bottom:28px}
+.hero h1 .highlight{color:var(--plasma2);-webkit-text-stroke:1px var(--plasma);text-stroke:1px var(--plasma)}
+.hero h1 .spark{background:linear-gradient(120deg,var(--volt),var(--neon));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero-sub{font-size:18px;color:#b9c3e6;max-width:620px;line-height:1.5;margin-bottom:48px}
+.hero-stats{display:flex;gap:48px;flex-wrap:wrap}
+.stat{border-left:3px solid var(--plasma);padding-left:20px}
+.stat-num{font-family:var(--head);font-size:40px;font-weight:800;color:var(--volt)}
+.stat-label{font-family:var(--mono);font-size:11px;color:#8d99c6;text-transform:uppercase;letter-spacing:0.06em}
+
+section{padding:90px 48px;border-top:1px solid rgba(255,255,255,0.06)}
+.s-tag{font-family:var(--mono);font-size:11px;color:var(--neon);letter-spacing:0.15em;margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.s-tag::before{content:'';width:28px;height:2px;background:var(--neon)}
+.s-title{font-family:var(--head);font-size:clamp(28px,5vw,48px);font-weight:800;line-height:1.1;letter-spacing:-0.02em;margin-bottom:48px}
+
+.modules-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px}
+.module-card{background:rgba(18,25,45,0.7);backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,0.08);border-radius:24px;padding:32px 24px;transition:all 0.2s ease}
+.module-card:hover{transform:translateY(-6px);border-color:rgba(59,201,219,0.4);background:rgba(30,40,65,0.8)}
+.module-icon{font-size:38px;margin-bottom:20px;color:var(--volt)}
+.module-card h3{font-family:var(--head);font-size:24px;font-weight:700;margin-bottom:12px;color:var(--volt)}
+.module-desc{font-size:14px;color:#bbc3e0;line-height:1.5;margin-bottom:20px}
+.module-outcome{font-family:var(--mono);font-size:11px;color:var(--neon);border-top:1px dashed rgba(255,255,255,0.15);padding-top:16px;margin-top:8px}
+
+.weeks-track{margin-top:20px}
+.week-row{display:grid;grid-template-columns:100px 1fr;gap:0;margin-bottom:8px;background:rgba(255,255,255,0.02);border-radius:20px;overflow:hidden}
+.week-num{display:flex;align-items:center;justify-content:center;font-family:var(--head);font-size:32px;font-weight:800;color:rgba(255,255,255,0.15);background:rgba(0,0,0,0.3);padding:20px 12px}
+.week-num.active-w{color:var(--plasma);text-shadow:0 0 5px rgba(255,77,109,0.4)}
+.week-content{padding:20px 28px;border-left:1px solid rgba(255,255,255,0.08)}
+.week-title{font-family:var(--head);font-size:20px;font-weight:700;color:var(--neon);margin-bottom:6px}
+.week-desc{font-size:14px;color:#b1bbdd;margin-bottom:12px}
+.week-skills{display:flex;flex-wrap:wrap;gap:8px}
+.skill-badge{font-family:var(--mono);font-size:10px;background:rgba(255,209,102,0.12);color:var(--volt);padding:4px 10px;border-radius:40px}
+
+.agents-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.agent-card{padding:28px;background:rgba(20,28,48,0.7);border-radius:28px;border:1px solid rgba(255,255,255,0.05);transition:all 0.2s}
+.agent-card:hover{background:rgba(40,55,85,0.6);border-color:var(--purple)}
+.agent-icon{font-size:40px;margin-bottom:14px;color:var(--mint)}
+.agent-name{font-family:var(--head);font-size:20px;font-weight:700;color:var(--mint);margin-bottom:6px}
+.agent-job{font-family:var(--mono);font-size:10px;color:var(--purple);letter-spacing:0.05em;margin-bottom:12px}
+.agent-desc{font-size:13px;color:#c0c8e8;line-height:1.5}
+
+.wf-list{display:flex;flex-direction:column;gap:12px}
+.wf-step{display:grid;grid-template-columns:70px 1fr auto;background:rgba(0,0,0,0.25);border-radius:48px;align-items:center;padding:8px 16px 8px 8px;border:1px solid rgba(255,255,255,0.05)}
+.wf-num-circle{width:48px;height:48px;background:linear-gradient(145deg,var(--plasma),#ff2e55);border-radius:40px;display:flex;align-items:center;justify-content:center;font-weight:800;font-family:var(--head);font-size:20px;color:white}
+.wf-text h4{font-family:var(--head);font-size:16px;font-weight:700}
+.wf-text p{font-size:12px;color:#a5b1dc}
+.wf-badge{font-family:var(--mono);font-size:9px;background:rgba(59,201,219,0.2);color:var(--neon);padding:6px 12px;border-radius:30px}
+
+.tool-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.tool-card{background:rgba(255,255,255,0.03);border-radius:20px;padding:20px;border:1px solid rgba(255,255,255,0.07)}
+.tool-card h4{font-family:var(--head);font-size:16px;font-weight:700;margin-bottom:6px;display:flex;align-items:center;gap:8px}
+.tool-card h4 i{color:var(--volt);width:24px}
+.tool-for{font-size:12px;color:#9aa6cf;margin:8px 0 6px}
+.free-badge{font-size:9px;background:rgba(6,214,160,0.2);color:var(--mint);padding:2px 8px;border-radius:30px;display:inline-block}
+
+.skill-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px}
+.skill-card{text-align:center;padding:32px 18px;background:rgba(255,255,255,0.02);border-radius:32px}
+.skill-icon{font-size:40px;margin-bottom:14px;color:var(--neon)}
+.skill-card h4{font-family:var(--head);font-size:18px;font-weight:700}
+.skill-card p{font-size:13px;color:#a2afd5;margin-top:10px}
+
+.resource-table{width:100%;border-collapse:collapse;background:rgba(0,0,0,0.25);border-radius:28px;overflow:hidden}
+.resource-table th{font-family:var(--mono);font-size:11px;color:var(--neon);text-align:left;padding:16px 20px;border-bottom:1px solid rgba(255,255,255,0.1)}
+.resource-table td{padding:14px 20px;border-bottom:1px solid rgba(255,255,255,0.06);font-size:13px}
+.free-tag{color:var(--mint);font-family:var(--mono);font-size:10px}
+.resource-table i{margin-right:8px;color:var(--volt);width:20px}
+
+footer{padding:48px;border-top:1px solid rgba(255,255,255,0.08);display:flex;justify-content:space-between;flex-wrap:wrap;gap:20px}
+.footer-logo{font-family:var(--head);font-size:22px;font-weight:800;background:linear-gradient(135deg,var(--plasma),var(--volt));-webkit-background-clip:text;background-clip:text;color:transparent}
+.footer-logo i{margin-right:6px;color:var(--plasma);background:none;-webkit-background-clip:unset}
+.footer-meta{font-family:var(--mono);font-size:11px;color:#6a739c;text-align:right}
+
+.fade-in{opacity:0;transform:translateY(16px);transition:opacity 0.5s ease,transform 0.5s ease}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:900px){
+  .agents-grid,.tool-grid,.skill-grid{grid-template-columns:1fr}
+  .week-row{grid-template-columns:1fr}
+  .week-num{padding:12px}
+  .wf-step{grid-template-columns:1fr;gap:12px;border-radius:32px;padding:16px}
+  .wf-num-circle{margin-right:auto}
+  section{padding:60px 24px}
+  .hero{padding:100px 24px 60px}
+  nav .nav-links{display:none}
+}
+</style>
+<link rel="stylesheet" href="shared-responsive.css">
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo"><i class="fas fa-code"></i> ZARA ROADMAP // AI-Powered Developer Curriculum</div>
+
+  <div class="nav-links">
+    <a href="#modules">Modules</a>
+    <a href="#roadmap">Roadmap</a>
+    <a href="#aiagents">AI Team</a>
+    <a href="#workflow">Workflow</a>
+    <a href="#toolbox">Toolbox</a>
+    <a href="#skills">Skills</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-tag"><i class="fas fa-terminal"></i> A STRUCTURED LEARNING ROADMAP IN JAVASCRIPT, REACT, FASTAPI, AND AI</div>
+  <h1>
+    <div>ZARA'S<span class="highlight"> AI-POWERED</span></div>
+    <div>DEVELOPER <span class="spark">ROADMAP</span></div>
+  </h1>
+  <p class="hero-sub">This curriculum is designed to guide Zara from her current foundation in HTML, CSS, and beginner JavaScript toward modern frontend development, backend API work with FastAPI, and the thoughtful use of AI inside real products. It is structured as a step-by-step roadmap rather than an assumption that she is already there.</p>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num">4</div><div class="stat-label">Core Dev Modules</div></div>
+    <div class="stat"><div class="stat-num">8</div><div class="stat-label">Weeks to Build</div></div>
+    <div class="stat"><div class="stat-num">10+</div><div class="stat-label">Tools and APIs</div></div>
+    <div class="stat"><div class="stat-num">3</div><div class="stat-label">Capstone Paths</div></div>
+  </div>
+</section>
+
+<section id="modules">
+  <div class="s-tag">01 // EXPLORE MODULES</div>
+  <h2 class="s-title">A clear curriculum path<br>for Zara's next stage</h2>
+  <div class="modules-grid fade-in">
+    <div class="module-card"><div class="module-icon"><i class="fas fa-bolt"></i> <i class="fas fa-code"></i></div><h3>JavaScript Deep Dive</h3><div class="module-desc">Move from knowing the basics to really understanding scope, closures, async code, data flow, DOM events, and live API calls.</div><div class="module-outcome"><i class="fas fa-bullseye"></i> Output: interactive weather dashboard in vanilla JS</div></div>
+    <div class="module-card"><div class="module-icon"><i class="fas fa-cubes"></i> <i class="fas fa-laptop-code"></i></div><h3>React UI Builder</h3><div class="module-desc">Learn components, props, state, effects, routing, and responsive design so Zara can move from static pages to structured interactive applications.</div><div class="module-outcome"><i class="fas fa-bullseye"></i> Output: responsive React portfolio or search app</div></div>
+    <div class="module-card"><div class="module-icon"><i class="fas fa-server"></i> <i class="fas fa-plug"></i></div><h3>FastAPI and Backend Basics</h3><div class="module-desc">Understand how server-side development works, how APIs are designed, and how a frontend connects to a Python backend.</div><div class="module-outcome"><i class="fas fa-bullseye"></i> Output: full CRUD API with a live frontend</div></div>
+    <div class="module-card"><div class="module-icon"><i class="fas fa-robot"></i> <i class="fas fa-comments"></i></div><h3>AI Features in Apps</h3><div class="module-desc">Introduce AI gradually through practical features such as explainers, assistants, summaries, and study support inside projects she builds herself.</div><div class="module-outcome"><i class="fas fa-bullseye"></i> Output: custom AI widget inside a real app</div></div>
+    <div class="module-card"><div class="module-icon"><i class="fas fa-wand-magic-sparkles"></i> <i class="fas fa-bug"></i></div><h3>AI-Assisted Development Skills</h3><div class="module-desc">Learn how to use AI tools responsibly for debugging, planning, refactoring, and code review while still developing genuine understanding.</div><div class="module-outcome"><i class="fas fa-bullseye"></i> Output: stronger workflow and cleaner debugging habits</div></div>
+    <div class="module-card"><div class="module-icon"><i class="fas fa-rocket"></i> <i class="fas fa-globe"></i></div><h3>Portfolio and Deployment</h3><div class="module-desc">Deploy projects, protect secrets, test across devices, and turn completed work into a portfolio that reflects Zara's progress.</div><div class="module-outcome"><i class="fas fa-bullseye"></i> Output: deployed capstone with a shareable link</div></div>
+  </div>
+</section>
+
+<section id="roadmap">
+  <div class="s-tag">02 // 8-Week Roadmap</div>
+  <h2 class="s-title">A step-by-step journey from<br>frontend basics to AI projects</h2>
+  <div class="weeks-track fade-in">
+    <div class="week-row"><div class="week-num active-w">1</div><div class="week-content"><div class="week-title"><i class="fas fa-brain"></i> How JavaScript Really Works</div><div class="week-desc">Event loop, call stack, scope, closures, functions, arrays, objects, and modern syntax. Goal: stop guessing and start reasoning.</div><div class="week-skills"><span class="skill-badge">Closures</span><span class="skill-badge">Core JS</span></div></div></div>
+    <div class="week-row"><div class="week-num">2</div><div class="week-content"><div class="week-title"><i class="fas fa-cloud-arrow-down"></i> Async JavaScript and APIs</div><div class="week-desc">Promises, async/await, loading states, errors, Fetch API, and interactive DOM work. Build a project that talks to a real API.</div><div class="week-skills"><span class="skill-badge">Fetch</span><span class="skill-badge">Async UI</span></div></div></div>
+    <div class="week-row"><div class="week-num">3</div><div class="week-content"><div class="week-title"><i class="fas fa-cubes"></i> Thinking in React</div><div class="week-desc">Components, JSX, props, state, conditional rendering, and list rendering. Start rebuilding familiar projects the React way.</div><div class="week-skills"><span class="skill-badge">Components</span><span class="skill-badge">State</span></div></div></div>
+    <div class="week-row"><div class="week-num">4</div><div class="week-content"><div class="week-title"><i class="fas fa-route"></i> Hooks, Styling, and Routing</div><div class="week-desc">useEffect, custom hooks, routing, responsive layouts, and reusable UI patterns. Turn small components into a real product flow.</div><div class="week-skills"><span class="skill-badge">Hooks</span><span class="skill-badge">Routing</span></div></div></div>
+    <div class="week-row"><div class="week-num">5</div><div class="week-content"><div class="week-title"><i class="fas fa-server"></i> FastAPI Foundations</div><div class="week-desc">Learn what the server does, create endpoints, validate data with Pydantic, and design APIs the frontend can trust.</div><div class="week-skills"><span class="skill-badge">FastAPI</span><span class="skill-badge">REST API</span></div></div></div>
+    <div class="week-row"><div class="week-num">6</div><div class="week-content"><div class="week-title"><i class="fas fa-database"></i> Data, Auth, and Full Stack</div><div class="week-desc">Connect FastAPI to a database, wire up CRUD flows, handle auth basics, and get the app ready for real users.</div><div class="week-skills"><span class="skill-badge">Data models</span><span class="skill-badge">CRUD</span></div></div></div>
+    <div class="week-row"><div class="week-num">7</div><div class="week-content"><div class="week-title"><i class="fas fa-robot"></i> Build with LLM APIs</div><div class="week-desc">Learn prompts, system rules, structured JSON output, and streaming responses. Add an AI explainer or chat feature into Zara's app.</div><div class="week-skills"><span class="skill-badge">Prompt design</span><span class="skill-badge">LLM API</span></div></div></div>
+    <div class="week-row"><div class="week-num">8</div><div class="week-content"><div class="week-title"><i class="fas fa-rocket"></i> Capstone and Launch</div><div class="week-desc">Complete a polished final project, test it across devices, and publish work that shows how far Zara has progressed through the curriculum.</div><div class="week-skills"><span class="skill-badge">Deployment</span><span class="skill-badge">Portfolio</span></div></div></div>
+  </div>
+</section>
+
+<section id="aiagents">
+  <div class="s-tag">03 // LEARNING SUPPORTS</div>
+  <h2 class="s-title">AI tools that can support<br>Zara along the way</h2>
+  <div class="agents-grid fade-in">
+    <div class="agent-card"><div class="agent-icon"><i class="fas fa-glasses"></i> <i class="fas fa-bug"></i></div><div class="agent-name">Debug Partner</div><div class="agent-job">code reader and problem solver</div><div class="agent-desc">Helps Zara trace errors, explain stack traces, and isolate what actually broke instead of changing random lines.</div></div>
+    <div class="agent-card"><div class="agent-icon"><i class="fas fa-palette"></i> <i class="fas fa-cubes"></i></div><div class="agent-name">UI Copilot</div><div class="agent-job">react component helper</div><div class="agent-desc">Turns rough ideas into component plans, prop structures, and cleaner layouts while keeping Zara in control of the design.</div></div>
+    <div class="agent-card"><div class="agent-icon"><i class="fas fa-plug"></i> <i class="fas fa-diagram-project"></i></div><div class="agent-name">API Planner</div><div class="agent-job">request and data architect</div><div class="agent-desc">Suggests routes, request shapes, loading states, and error handling so frontend and backend agree on how data moves.</div></div>
+    <div class="agent-card"><div class="agent-icon"><i class="fas fa-server"></i> <i class="fas fa-database"></i></div><div class="agent-name">FastAPI Guide</div><div class="agent-job">python backend coach</div><div class="agent-desc">Can support Zara through endpoint design, Pydantic models, CRUD flows, and the details that make full-stack apps work.</div></div>
+    <div class="agent-card"><div class="agent-icon"><i class="fas fa-robot"></i> <i class="fas fa-comment-dots"></i></div><div class="agent-name">Prompt Architect</div><div class="agent-job">llm feature designer</div><div class="agent-desc">Helps shape system prompts, structured outputs, and safe UX so AI features feel useful inside the app instead of gimmicky.</div></div>
+    <div class="agent-card"><div class="agent-icon"><i class="fas fa-rocket"></i> <i class="fas fa-shield-halved"></i></div><div class="agent-name">Launch Coach</div><div class="agent-job">deployment and polish assistant</div><div class="agent-desc">Checks responsiveness, environment variables, build issues, and presentation before Zara puts a project live.</div></div>
+  </div>
+</section>
+
+<section id="workflow">
+  <div class="s-tag">04 // LEARNING FLOW</div>
+  <h2 class="s-title">How the roadmap moves from<br>idea to finished project</h2>
+  <div class="wf-list fade-in">
+    <div class="wf-step"><div class="wf-num-circle">1</div><div class="wf-text"><h4><i class="fas fa-lightbulb"></i> Start with a Manageable Project Idea</h4><p>The roadmap begins with projects that are useful, age-appropriate, and realistic for Zara's stage of learning.</p></div><div class="wf-badge"><i class="fas fa-bullseye"></i> project scope</div></div>
+    <div class="wf-step"><div class="wf-num-circle">2</div><div class="wf-text"><h4><i class="fas fa-sitemap"></i> Plan the Interface and Data Flow</h4><p>Before building, Zara learns how to map screens, user actions, and the data each feature needs.</p></div><div class="wf-badge"><i class="fas fa-cubes"></i> planning</div></div>
+    <div class="wf-step"><div class="wf-num-circle">3</div><div class="wf-text"><h4><i class="fas fa-laptop-code"></i> Build the Frontend Properly</h4><p>She then develops the interface in React using reusable components, forms, and responsive layouts.</p></div><div class="wf-badge"><i class="fas fa-palette"></i> frontend</div></div>
+    <div class="wf-step"><div class="wf-num-circle">4</div><div class="wf-text"><h4><i class="fas fa-server"></i> Add Backend Logic and APIs</h4><p>The curriculum introduces FastAPI so Zara can understand how data is stored, validated, and served beyond the browser.</p></div><div class="wf-badge"><i class="fas fa-database"></i> backend</div></div>
+    <div class="wf-step"><div class="wf-num-circle">5</div><div class="wf-text"><h4><i class="fas fa-robot"></i> Introduce AI Features Thoughtfully</h4><p>Only after the foundations are in place does the roadmap add AI features such as explainers, chat tools, or summaries.</p></div><div class="wf-badge"><i class="fas fa-comment-dots"></i> AI integration</div></div>
+    <div class="wf-step"><div class="wf-num-circle">6</div><div class="wf-text"><h4><i class="fas fa-magnifying-glass"></i> Test, Debug, and Refine</h4><p>Zara learns how to check errors, improve usability, and review AI-generated suggestions critically rather than accepting them blindly.</p></div><div class="wf-badge"><i class="fas fa-bug"></i> refinement</div></div>
+    <div class="wf-step"><div class="wf-num-circle">7</div><div class="wf-text"><h4><i class="fas fa-rocket"></i> Finish and Present the Work</h4><p>The final stage focuses on deployment, presentation, and turning completed projects into evidence of real growth.</p></div><div class="wf-badge"><i class="fas fa-globe"></i> final outcome</div></div>
+  </div>
+</section>
+
+<section id="toolbox">
+  <div class="s-tag">05 // AI TOOLBOX</div>
+  <h2 class="s-title">Free and beginner-friendly<br>tools to start building</h2>
+  <div class="tool-grid fade-in">
+    <div class="tool-card"><h4><i class="fas fa-comment-dots"></i> ChatGPT / Claude</h4><div class="tool-for">Concepts, debugging, prompt experiments</div><div class="free-badge free-tag">FREE TIER</div><div style="font-size:12px; margin-top:10px;">Ask for explanations, compare solutions, and prototype AI-assisted features with clearer prompts.</div></div>
+    <div class="tool-card"><h4><i class="fas fa-code-branch"></i> GitHub Copilot</h4><div class="tool-for">Code completion and pair programming</div><div class="free-badge free-tag">Student access available</div><div style="font-size:12px;">Useful for speeding up boilerplate, but Zara should still read and verify every line.</div></div>
+    <div class="tool-card"><h4><i class="fas fa-window-maximize"></i> Vercel v0</h4><div class="tool-for">React UI generation</div><div class="free-badge free-tag">FREE TO START</div><div style="font-size:12px;">Generate starter UI ideas quickly, then refine them into something that feels like her own work.</div></div>
+    <div class="tool-card"><h4><i class="fas fa-cubes"></i> React</h4><div class="tool-for">Frontend app building</div><div class="free-badge free-tag">OPEN SOURCE</div><div style="font-size:12px;">The core framework for turning small pages into reusable, interactive product interfaces.</div></div>
+    <div class="tool-card"><h4><i class="fas fa-server"></i> FastAPI</h4><div class="tool-for">Backend routes and APIs</div><div class="free-badge free-tag">OPEN SOURCE</div><div style="font-size:12px;">A clean Python-first way to build APIs quickly with automatic docs and strong data validation.</div></div>
+    <div class="tool-card"><h4><i class="fas fa-database"></i> Supabase</h4><div class="tool-for">Database, auth, and storage</div><div class="free-badge free-tag">FREE TIER</div><div style="font-size:12px;">Lets Zara add real data and auth without spending weeks on infrastructure.</div></div>
+    <div class="tool-card"><h4><i class="fas fa-robot"></i> OpenAI or Anthropic API</h4><div class="tool-for">LLM features inside apps</div><div class="free-badge free-tag">PAY AS YOU GO</div><div style="font-size:12px;">Use for chat, explanation, summarizing, structured output, and other practical AI product features.</div></div>
+    <div class="tool-card"><h4><i class="fas fa-paper-plane"></i> Postman / Thunder Client</h4><div class="tool-for">Testing requests</div><div class="free-badge free-tag">FREE</div><div style="font-size:12px;">Great for checking whether the API works before blaming the frontend.</div></div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="s-tag">06 // WHAT YOU'LL GAIN</div>
+  <h2 class="s-title">Long-term skills this curriculum<br>is designed to build</h2>
+  <div class="skill-grid fade-in">
+    <div class="skill-card"><div class="skill-icon"><i class="fas fa-brain"></i></div><h4>JavaScript Reasoning</h4><p>Understand why code behaves the way it does instead of memorizing snippets.</p></div>
+    <div class="skill-card"><div class="skill-icon"><i class="fas fa-cubes"></i></div><h4>React Product Thinking</h4><p>Break interfaces into components, state flows, and reusable patterns.</p></div>
+    <div class="skill-card"><div class="skill-icon"><i class="fas fa-server"></i></div><h4>API and Backend Fluency</h4><p>Design routes, manage data, and connect frontend and backend with confidence.</p></div>
+    <div class="skill-card"><div class="skill-icon"><i class="fas fa-robot"></i></div><h4>AI Feature Design</h4><p>Build AI experiences that are useful, safe, and thoughtfully integrated into real apps.</p></div>
+  </div>
+</section>
+
+<section id="resources" style="background:#050a16">
+  <div class="s-tag">07 // RESOURCE HUB</div>
+  <h2 class="s-title">Supporting materials and<br>practical build guides</h2>
+  <table class="resource-table fade-in">
+    <thead><tr><th><i class="fas fa-book"></i> RESOURCE</th><th>WHAT'S INSIDE</th><th>ACCESS</th></tr></thead>
+    <tbody>
+      <tr><td><i class="fas fa-fire"></i> JavaScript Drill Pack</td><td>Closures, async predictions, DOM exercises, and small API challenges</td><td class="free-tag"><i class="fas fa-download"></i> Practice set</td></tr>
+      <tr><td><i class="fas fa-check-double"></i> React Build Checklist</td><td>Component planning, props, state, effects, routing, and responsive UI reminders</td><td class="free-tag">Curriculum bonus</td></tr>
+      <tr><td><i class="fas fa-robot"></i> AI Feature Prompt Pack</td><td>Starter system prompts, structured JSON patterns, and UI safety notes</td><td class="free-tag">Template set</td></tr>
+      <tr><td><i class="fas fa-trophy"></i> Capstone Project Paths</td><td>Portfolio site, study buddy, and full-stack app ideas Zara can work toward by the end of the roadmap</td><td class="free-tag">Project guide</td></tr>
+      <tr><td><i class="fas fa-shield-alt"></i> Dev Ethics and AI Use</td><td>API key safety, hallucination checks, privacy basics, and when not to trust generated code</td><td class="free-tag">Must-read module</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<div class="footer-tab-nav" aria-label="Site links">
+  <a class="footer-tab-link" href="index.html">Home</a>
+  <a class="footer-tab-link is-active" href="ai_for_dev.html">AI for Developer</a>
+  <a class="footer-tab-link" href="ai_for_story.html">AI for Content</a>
+  <a class="footer-tab-link" href="ai_tools.html">Shared Tools</a>
+</div>
+
+<footer>
+  <div class="footer-logo"><i class="fas fa-star"></i> ZARA'S ROADMAP - LEARN, BUILD, GROW</div>
+  <div class="footer-meta">
+    Developer curriculum v1.0 - structured as a guided roadmap<br>
+    Tailored for Zara - 2026
+  </div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('visible'); });
+}, { threshold: 0.15 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

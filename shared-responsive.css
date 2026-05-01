@@ -1,0 +1,359 @@
+body{
+  overflow-x:hidden;
+}
+
+.footer-tab-nav{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  padding:20px 24px 0;
+  justify-content:center;
+}
+
+.footer-tab-link{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  text-decoration:none;
+  color:#f0f3fa;
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:999px;
+  padding:10px 14px;
+  min-height:42px;
+  font-family:'Space Mono',monospace;
+  font-size:11px;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  transition:background .18s ease,border-color .18s ease,transform .18s ease;
+}
+
+.footer-tab-link:hover{
+  transform:translateY(-1px);
+  border-color:rgba(59,201,219,0.45);
+  background:rgba(255,255,255,0.07);
+}
+
+.footer-tab-link.is-active{
+  border-color:rgba(255,77,109,0.45);
+  color:#ffd166;
+}
+
+h1,
+.hero h1,
+.hero h1 div,
+.hero h1 span,
+.nav-logo,
+.hero-tag,
+.hero-sub,
+.s-title,
+.module-card h3,
+.agent-name,
+.link-card h2,
+.card h2{
+  max-width:100%;
+  overflow-wrap:anywhere;
+  word-break:normal;
+}
+
+img,
+video,
+canvas,
+svg{
+  max-width:100%;
+  height:auto;
+}
+
+@media(max-width:1100px){
+  .hero{
+    padding:110px 32px 70px;
+  }
+
+  section{
+    padding:72px 32px;
+  }
+
+  .tool-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .agents-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .skill-grid{
+    grid-template-columns:repeat(2,1fr);
+    gap:14px;
+  }
+
+  .link-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+}
+
+@media(max-width:900px){
+  nav{
+    padding:12px 18px;
+  }
+
+  .nav-logo{
+    font-size:12px;
+  }
+
+  nav .nav-links{
+    display:none;
+  }
+
+  .hero{
+    min-height:auto;
+    padding:96px 24px 56px;
+  }
+
+  section{
+    padding:60px 24px;
+  }
+
+  .hero-sub{
+    font-size:16px;
+    max-width:100%;
+  }
+
+  .modules-grid,
+  .agents-grid,
+  .tool-grid,
+  .skill-grid,
+  .link-grid,
+  .grid{
+    grid-template-columns:1fr;
+  }
+
+  .week-row{
+    grid-template-columns:1fr;
+  }
+
+  .week-num{
+    justify-content:flex-start;
+    padding:14px 18px;
+    font-size:28px;
+  }
+
+  .week-content{
+    border-left:none;
+    border-top:1px solid rgba(255,255,255,0.08);
+    padding:18px 18px 20px;
+  }
+
+  .wf-step{
+    grid-template-columns:1fr;
+    gap:12px;
+    border-radius:28px;
+    padding:16px;
+  }
+
+  .wf-num-circle{
+    margin-right:auto;
+  }
+
+  .resource-table{
+    display:block;
+    overflow-x:auto;
+    white-space:nowrap;
+    -webkit-overflow-scrolling:touch;
+  }
+
+  .resource-table thead,
+  .resource-table tbody,
+  .resource-table tr{
+    width:max-content;
+  }
+
+  .wrap{
+    padding:32px 18px 48px;
+  }
+
+  .footer-tab-nav{
+    padding:18px 18px 0;
+    gap:10px;
+  }
+}
+
+@media(max-width:640px){
+  .hero-tag,
+  .s-tag,
+  .eyebrow,
+  .card-kicker{
+    font-size:10px;
+    letter-spacing:0.12em;
+  }
+
+  .hero h1,
+  h1{
+    font-size:clamp(34px,11vw,56px);
+    line-height:1;
+  }
+
+  .module-card,
+  .agent-card,
+  .tool-card,
+  .skill-card,
+  .link-card,
+  .card{
+    padding:22px 18px;
+    border-radius:20px;
+  }
+
+  .module-card h3,
+  .link-card h2,
+  .card h2{
+    font-size:22px;
+  }
+
+  .week-title{
+    font-size:18px;
+  }
+
+  .week-desc,
+  .module-desc,
+  .agent-desc,
+  .tool-for,
+  .tool-card p,
+  .intro{
+    font-size:13px;
+  }
+
+  .stat-num{
+    font-size:32px;
+  }
+
+  .hero-stats{
+    gap:22px;
+  }
+
+  .stat{
+    min-width:0;
+  }
+
+  .hero-tag{
+    gap:10px;
+    line-height:1.5;
+  }
+
+  .nav-logo{
+    line-height:1.45;
+  }
+
+  .resource-table th,
+  .resource-table td{
+    padding:12px 14px;
+  }
+
+  .footer-tab-link{
+    width:100%;
+    border-radius:16px;
+    font-size:10px;
+    letter-spacing:0.06em;
+  }
+}
+
+@media(max-width:420px){
+  nav{
+    padding:10px 14px;
+  }
+
+  .hero{
+    padding:88px 16px 44px;
+  }
+
+  section{
+    padding:48px 16px;
+  }
+
+  .hero h1,
+  h1{
+    font-size:clamp(30px,10.5vw,46px);
+    line-height:1.02;
+    letter-spacing:-0.02em;
+  }
+
+  .hero-sub{
+    font-size:15px;
+    line-height:1.55;
+  }
+
+  .hero-stats{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px 12px;
+  }
+
+  .stat-num{
+    font-size:28px;
+  }
+
+  .stat-label{
+    font-size:10px;
+    line-height:1.45;
+  }
+
+  .module-card,
+  .agent-card,
+  .tool-card,
+  .skill-card,
+  .link-card,
+  .card{
+    padding:18px 16px;
+    border-radius:18px;
+  }
+
+  .module-card h3,
+  .link-card h2,
+  .card h2{
+    font-size:20px;
+  }
+
+  .week-num{
+    font-size:24px;
+    padding:12px 14px;
+  }
+
+  .week-content{
+    padding:16px 14px 18px;
+  }
+
+  .wf-step{
+    padding:14px;
+  }
+
+  .tool-card h4{
+    font-size:15px;
+    line-height:1.4;
+  }
+
+  .resource-table th,
+  .resource-table td{
+    font-size:12px;
+    padding:10px 12px;
+  }
+
+  .footer-tab-nav{
+    padding:16px 16px 0;
+  }
+}
+
+@media(max-width:360px){
+  .hero h1,
+  h1{
+    font-size:clamp(26px,10vw,38px);
+  }
+
+  .hero-stats{
+    grid-template-columns:1fr;
+  }
+
+  .hero-tag,
+  .s-tag,
+  .eyebrow,
+  .card-kicker{
+    letter-spacing:0.08em;
+  }
+}

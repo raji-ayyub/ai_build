@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zara AI Roadmaps</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --deep:#0a0f1c;
+  --plasma:#ff4d6d;
+  --plasma2:#ff4d6e13;
+  --neon:#3bc9db;
+  --volt:#ffd166;
+  --mono:'Space Mono',monospace;
+  --head:'Syne',sans-serif;
+  --body:'DM Sans',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--deep);color:#f0f3fa;font-family:var(--body);overflow-x:hidden}
+.hero{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:120px 48px 80px;
+  position:relative;
+  overflow:hidden;
+}
+.hero-grid{
+  position:absolute;
+  inset:0;
+  background-image:radial-gradient(circle at 20% 40%, rgba(59,201,219,0.08) 1px, transparent 1px);
+  background-size:32px 32px;
+  pointer-events:none;
+}
+.hero-tag{
+  position:relative;
+  z-index:1;
+  font-family:var(--mono);
+  font-size:11px;
+  color:var(--neon);
+  letter-spacing:0.15em;
+  margin-bottom:24px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.hero-tag::before{
+  content:'';
+  width:36px;
+  height:2px;
+  background:var(--plasma);
+}
+h1{
+  position:relative;
+  z-index:1;
+  font-family:var(--head);
+  font-size:clamp(52px,9vw,110px);
+  font-weight:800;
+  line-height:0.95;
+  letter-spacing:-0.03em;
+  margin-bottom:26px;
+}
+.highlight{
+  color:var(--plasma2);
+  -webkit-text-stroke:1px var(--plasma);
+  text-stroke:1px var(--plasma);
+}
+.spark{
+  background:linear-gradient(120deg,var(--volt),var(--neon));
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+.hero-sub{
+  position:relative;
+  z-index:1;
+  font-size:18px;
+  color:#b9c3e6;
+  max-width:650px;
+  line-height:1.6;
+  margin-bottom:40px;
+}
+.link-grid{
+  position:relative;
+  z-index:1;
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:20px;
+  width:100%;
+  max-width:1150px;
+}
+.link-card{
+  text-decoration:none;
+  color:#f0f3fa;
+  background:rgba(18,25,45,0.72);
+  backdrop-filter:blur(4px);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:24px;
+  padding:28px 24px;
+  transition:all 0.22s ease;
+}
+.link-card:hover{
+  transform:translateY(-6px);
+  border-color:rgba(59,201,219,0.42);
+  background:rgba(30,40,65,0.82);
+}
+.card-kicker{
+  font-family:var(--mono);
+  font-size:10px;
+  color:var(--neon);
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  margin-bottom:14px;
+}
+.link-card h2{
+  font-family:var(--head);
+  font-size:28px;
+  line-height:1.05;
+  color:var(--volt);
+  margin-bottom:12px;
+}
+.link-card p{
+  font-size:14px;
+  color:#bbc3e0;
+  line-height:1.6;
+  margin-bottom:18px;
+}
+.cta{
+  font-family:var(--mono);
+  font-size:11px;
+  color:#ffffff;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+}
+@media(max-width:900px){
+  .link-grid{grid-template-columns:1fr}
+  .hero{padding:100px 24px 60px}
+}
+</style>
+<link rel="stylesheet" href="shared-responsive.css">
+</head>
+<body>
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-tag">ONE LINK TO ALL OF ZARA'S AI LEARNING PATHS</div>
+  <h1>
+    <div>ZARA'S <span class="highlight">AI LEARNING</span></div>
+    <div><span class="spark">ROADMAPS</span> HUB</div>
+  </h1>
+  <p class="hero-sub">A single entry point for Zara's two curriculum proposals and the shared tools reference. This page is designed to be the simple home link you can deploy and send on its own.</p>
+
+  <div class="link-grid">
+    <a class="link-card" href="ai_for_dev.html">
+      <div class="card-kicker">Roadmap 01</div>
+      <h2>AI for Developer</h2>
+      <p>Frontend, FastAPI, product thinking, app-building, and practical AI development skills structured as a guided roadmap.</p>
+      <div class="cta">Open Developer Track</div>
+    </a>
+
+    <a class="link-card" href="ai_for_story.html">
+      <div class="card-kicker">Roadmap 02</div>
+      <h2>AI for Content</h2>
+      <p>Content strategy, promotional visuals, short-form video, publishing, and creative AI workflows for modern digital media.</p>
+      <div class="cta">Open Content Track</div>
+    </a>
+
+    <a class="link-card" href="ai_tools.html">
+      <div class="card-kicker">Reference</div>
+      <h2>Shared Tools</h2>
+      <p>A combined reference for the main AI, design, development, and media tools mentioned across both learning tracks.</p>
+      <div class="cta">Open Tools Guide</div>
+    </a>
+  </div>
+</section>
+<div class="footer-tab-nav" aria-label="Site links">
+  <a class="footer-tab-link is-active" href="index.html">Home</a>
+  <a class="footer-tab-link" href="ai_for_dev.html">AI for Developer</a>
+  <a class="footer-tab-link" href="ai_for_story.html">AI for Content</a>
+  <a class="footer-tab-link" href="ai_tools.html">Shared Tools</a>
+</div>
+</body>
+</html>
